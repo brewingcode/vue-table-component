@@ -12,6 +12,7 @@
                     @click="filter = ''"
                     class="table-component__filter__clear"
             >×</a>
+            <span> {{rowCount}}</span>
         </div>
 
         <div class="table-component__table-wrapper">
@@ -93,6 +94,8 @@
             filterInputClass: { default: () => settings.filterInputClass },
             filterPlaceholder: { default: () => settings.filterPlaceholder },
             filterNoResults: { default: () => settings.filterNoResults },
+
+            countLabel: { default: 'row', type: String },
         },
 
         data: () => ({
@@ -228,6 +231,18 @@
             storageKey() {
                 return `vue-table-component.${this.cacheKey}`;
             },
+
+            rowCount() {
+                if (this.displayedRows.length === 0) {
+                    return `No ${this.countLabel}s`;
+                }
+                else if (this.displayedRows.length === 1) {
+                    return `1 ${this.countLabel}`;
+                }
+                else {
+                    return `${this.displayedRows.length} ${this.countLabel}s`;
+                }
+            }
         },
 
         methods: {
