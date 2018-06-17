@@ -1,8 +1,6 @@
 class ExpiringStorage {
     get(key) {
-        const cached = JSON.parse(
-            localStorage.getItem(key)
-        );
+        const cached = null;
 
         if (! cached) {
             return null;

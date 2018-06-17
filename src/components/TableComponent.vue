@@ -226,9 +226,7 @@
             },
 
             storageKey() {
-                return this.cacheKey
-                    ? `vue-table-component.${this.cacheKey}`
-                    : `vue-table-component.${window.location.host}${window.location.pathname}${this.cacheKey}`;
+                return `vue-table-component.${this.cacheKey}`;
             },
         },
 
